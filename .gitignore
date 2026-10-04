@@ -1,0 +1,14 @@
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+public/pdf/
+.idea/
+test-results/
+playwright-report/
+output/
+artifacts/
+*.tsbuildinfo
+src-tauri/resources/THIRD_PARTY_NOTICES.txt
+*.log
+.DS_Store

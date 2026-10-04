@@ -1,0 +1,8 @@
+/* Text-layer geometry adapted from PDF.js (Apache-2.0). See THIRD_PARTY.md. */
+.textLayer { color-scheme: only light; position: absolute; text-align: initial; inset: 0; overflow: hidden; line-height: 1; letter-spacing: normal; word-spacing: normal; -webkit-text-size-adjust: none; text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0; --min-font-size: 1; --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size)); --min-font-size-inv: calc(1 / var(--min-font-size)); }
+.textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0 0; -webkit-user-select: text; user-select: text; }
+.textLayer > :not(.markedContent), .textLayer .markedContent span:not(.markedContent) { z-index: 1; --font-height: 0; font-size: calc(var(--text-scale-factor) * var(--font-height)); --scale-x: 1; --rotate: 0deg; transform: rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv)); }
+.textLayer .markedContent { display: contents; }
+.textLayer ::selection { background: rgb(52 109 225 / 30%); color: transparent; }
+.textLayer mark { color: transparent; background: rgb(248 205 52 / 45%); padding: 0; }
+.textLayer mark.current { color: transparent; background: rgb(240 149 32 / 65%); outline: 1px solid #ad6816; }

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Folio",
+  "version": "../package.json",
+  "identifier": "app.folio.viewer",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build && node scripts/third-party-notices.mjs",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "capabilities": ["main"],
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' blob: data:; worker-src 'self' blob:; connect-src 'self' ipc: http://ipc.localhost; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'",
+      "devCsp": "default-src 'none'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' blob: data:; worker-src 'self' blob:; connect-src 'self' ipc: http://ipc.localhost ws://127.0.0.1:1420; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'"
+    }
+  },
+  "bundle": {
+    "publisher": "Tabierto",
+    "active": true,
+    "targets": ["nsis"],
+    "category": "Utility",
+    "shortDescription": "Read local documents",
+    "longDescription": "A lightweight, local-first, read-only viewer for documents, tables and images.",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.ico"],
+    "resources": { "resources/*": "." },
+    "fileAssociations": [
+      { "ext": ["pdf"], "name": "PDF document", "mimeType": "application/pdf", "role": "Viewer" },
+      { "ext": ["docx"], "name": "Word document", "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "role": "Viewer" },
+      { "ext": ["txt"], "name": "Text document", "mimeType": "text/plain", "role": "Viewer" },
+      { "ext": ["md", "markdown"], "name": "Markdown document", "mimeType": "text/markdown", "role": "Viewer" },
+      { "ext": ["csv"], "name": "CSV table", "mimeType": "text/csv", "role": "Viewer" },
+      { "ext": ["tsv"], "name": "TSV table", "mimeType": "text/tab-separated-values", "role": "Viewer" },
+      { "ext": ["png"], "mimeType": "image/png", "role": "Viewer" },
+      { "ext": ["jpg", "jpeg"], "mimeType": "image/jpeg", "role": "Viewer" },
+      { "ext": ["webp"], "mimeType": "image/webp", "role": "Viewer" },
+      { "ext": ["gif"], "mimeType": "image/gif", "role": "Viewer" },
+      { "ext": ["svg"], "mimeType": "image/svg+xml", "role": "Viewer" }
+    ],
+    "windows": { "nsis": { "installMode": "currentUser", "displayLanguageSelector": false } },
+    "linux": { "deb": { "desktopTemplate": "platform/linux/folio.desktop" }, "appimage": { "bundleMediaFramework": false } }
+  }
+}
